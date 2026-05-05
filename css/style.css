@@ -1,0 +1,335 @@
+/* 
+  Trail Guardian - Documentation Styles
+  Following SOLID principles and BEM naming convention
+*/
+
+:root {
+    --color-primary: #2d5a27;
+    --color-primary-light: #38a169;
+    --color-primary-bg: #f0fff4;
+    --color-secondary: #4a5568;
+    --color-text: #333;
+    --color-text-muted: #6b7280;
+    --color-border: #d1d5db;
+    --color-border-light: #e2e8f0;
+    --color-bg-light: #f8f9fa;
+    --color-accent: #4299e1;
+    --color-accent-bg: #ebf8ff;
+    
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-serif: 'Times New Roman', Times, serif;
+    --container-max-width: 900px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: #f4f7f6;
+    padding: var(--spacing-md);
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: #fff;
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Layout Blocks */
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 4px solid var(--color-primary);
+}
+
+.header__title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.header__subtitle {
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Navigation */
+.nav {
+    background-color: var(--color-bg-light);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--color-border-light);
+}
+
+.nav__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+}
+
+.nav__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.nav__link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Sections */
+.section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.section__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-border-light);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.section__title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background-color: var(--color-primary);
+    margin-right: 12px;
+    border-radius: 2px;
+}
+
+/* Articles and Content */
+.content-block {
+    margin-bottom: var(--spacing-md);
+}
+
+.content-block__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.table thead th {
+    background-color: var(--color-bg-light);
+    font-weight: 700;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.table--info td:first-child {
+    font-weight: 700;
+    background-color: var(--color-bg-light);
+    width: 30%;
+}
+
+/* Cards & Boxes */
+.card {
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--color-border-light);
+}
+
+.card--highlight {
+    background-color: var(--color-primary-bg);
+    border: 2px solid var(--color-primary-light);
+}
+
+.card--accent {
+    background-color: var(--color-accent-bg);
+    border-left: 4px solid var(--color-accent);
+}
+
+.card__title {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+/* Lists */
+.list {
+    margin: var(--spacing-sm) 0 var(--spacing-md) var(--spacing-md);
+}
+
+.list__item {
+    margin-bottom: 6px;
+    position: relative;
+}
+
+.list--features {
+    list-style: none;
+}
+
+.list--features .list__item::before {
+    content: '✓';
+    color: var(--color-primary-light);
+    font-weight: bold;
+    position: absolute;
+    left: -20px;
+}
+
+/* Code & Architecture */
+.code-block {
+    background-color: #2d3748;
+    color: #edf2f7;
+    border-radius: 6px;
+    padding: var(--spacing-md);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Roadmap */
+.roadmap {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.roadmap__item {
+    display: flex;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: var(--color-bg-light);
+    border-left: 5px solid var(--color-border);
+}
+
+.roadmap__item--done {
+    border-left-color: var(--color-primary-light);
+    background-color: var(--color-primary-bg);
+}
+
+.roadmap__item--active {
+    border-left-color: var(--color-accent);
+    background-color: var(--color-accent-bg);
+}
+
+/* Footer */
+.footer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border-light);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+.footer__content {
+    margin-bottom: 10px;
+}
+
+/* Utilities */
+.text-bold { font-weight: 700; }
+.text-italic { font-style: italic; }
+.text-primary { color: var(--color-primary); }
+.margin-top-sm { margin-top: var(--spacing-sm); }
+.page-break { page-break-before: always; }
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: #fff;
+        padding: 0;
+    }
+    .container {
+        box-shadow: none;
+        max-width: 100%;
+        padding: 0;
+    }
+    .no-print {
+        display: none !important;
+    }
+    .nav {
+        display: none;
+    }
+    .section {
+        break-inside: avoid;
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+    .header__title {
+        font-size: 1.5rem;
+    }
+    .table--info td:first-child {
+        width: 40%;
+    }
+    .nav__list {
+        grid-template-columns: 1fr;
+    }
+}

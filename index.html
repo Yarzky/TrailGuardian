@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Guardian - Documentação de Sistema</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">Trail Guardian</h1>
+            <h2 class="header__subtitle">Product Requirements Document - Sistema de Monitoramento e Segurança</h2>
+        </header>
+
+        <nav class="nav no-print">
+            <h3 class="nav__title">Sumário</h3>
+            <ul class="nav__list">
+                <li><a href="#info" class="nav__link">Informações do Projeto</a></li>
+                <li><a href="#objetivos" class="nav__link">Objetivos e Justificativa</a></li>
+                <li><a href="#publico" class="nav__link">Público-alvo e Stakeholders</a></li>
+                <li><a href="#arquitetura" class="nav__link">Arquitetura Técnica</a></li>
+                <li><a href="#requisitos" class="nav__link">Requisitos do Sistema</a></li>
+                <li><a href="#restricoes" class="nav__link">Restrições e Limitações</a></li>
+                <li><a href="#cronograma" class="nav__link">Plano de Desenvolvimento</a></li>
+                <li><a href="#aprovacao" class="nav__link">Aprovação</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="resumo" class="section">
+                <div class="card card--highlight">
+                    <h3 class="card__title">Resumo do Projeto</h3>
+                    <p>O <strong>Trail Guardian</strong> é uma solução focada no rastreamento em tempo real e segurança de aventureiros em locais sem conectividade celular convencional, utilizando tecnologia IoT (LoRa + ESP32).</p>
+                </div>
+            </section>
+
+            <section id="info" class="section">
+                <h2 class="section__title">Informações do Projeto</h2>
+                <table class="table table--info">
+                    <tbody>
+                        <tr>
+                            <td>Nome do Projeto</td>
+                            <td>Trail Guardian</td>
+                        </tr>
+                        <tr>
+                            <td>Versão</td>
+                            <td>1.0 Final</td>
+                        </tr>
+                        <tr>
+                            <td>Data de Criação</td>
+                            <td><time datetime="2026-03">Março de 2026</time></td>
+                        </tr>
+                        <tr>
+                            <td>Data de Entrega</td>
+                            <td><time datetime="2026-06">Junho de 2026</time></td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de Projeto</td>
+                            <td>Projeto Acadêmico (Engenharia de Software)</td>
+                        </tr>
+                        <tr>
+                            <td>Finalidade</td>
+                            <td>Monitoramento e segurança em áreas remotas via IoT</td>
+                        </tr>
+                        <tr>
+                            <td>Desenvolvedores</td>
+                            <td>Gabriel Paulino R. Teles, Rodrigo da Silva, Matheus Henrique S. Ribeiro</td>
+                        </tr>
+                        <tr>
+                            <td>Orientador</td>
+                            <td>Prof. Danilo Ruy Gomes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="objetivos" class="section">
+                <h2 class="section__title">Objetivos e Justificativa</h2>
+                
+                <article class="content-block">
+                    <h3 class="content-block__title">Objetivo Principal</h3>
+                    <div class="card card--accent">
+                        <p>Implementar uma solução tecnológica que garanta o monitoramento de pessoas em áreas sem conectividade celular, utilizando comunicação LoRa para envio de dados críticos de localização e emergência.</p>
+                    </div>
+                </article>
+
+                <article class="content-block">
+                    <h3 class="content-block__title">Justificativa</h3>
+                    <p>Em trilhas e áreas remotas, a falta de conectividade celular dificulta a localização em situações de risco. O Trail Guardian propõe uma rede independente e de baixo custo para mitigar esses riscos.</p>
+                </article>
+
+                <article class="content-block">
+                    <h3 class="content-block__title">Diferenciais</h3>
+                    <div class="card card--highlight">
+                        <ul class="list list--features">
+                            <li class="list__item"><span class="text-bold">IoT Real:</span> Implementado com hardware físico (ESP32 + LoRa), não apenas simulação.</li>
+                            <li class="list__item"><span class="text-bold">Independência:</span> Funciona em locais onde o sinal de celular é inexistente.</li>
+                            <li class="list__item"><span class="text-bold">Baixo Custo:</span> Utiliza componentes acessíveis e tecnologias open-source.</li>
+                            <li class="list__item"><span class="text-bold">Interface Moderna:</span> App desenvolvido em Flutter focado na experiência do usuário (UX).</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="content-block">
+                    <h3 class="content-block__title">Objetivos Específicos</h3>
+                    <ul class="list list--features">
+                        <li class="list__item">Desenvolver hardware emissor baseado em ESP32 e GPS NEO-6M.</li>
+                        <li class="list__item">Implementar rede de comunicação LoRa de longa distância.</li>
+                        <li class="list__item">Gerenciar mensagens em tempo real via Broker MQTT (Mosquitto).</li>
+                        <li class="list__item">Desenvolver interface mobile em Flutter para visualização em mapa.</li>
+                        <li class="list__item">Garantir baixo consumo de energia para operação prolongada.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="publico" class="section">
+                <h2 class="section__title">Público-alvo e Stakeholders</h2>
+                
+                <article class="content-block">
+                    <h3 class="content-block__title">Público-alvo</h3>
+                    <p>Trilheiros, ciclistas, aventureiros e equipes de monitoramento/resgate que operam em áreas rurais, florestas e zonas com sombra de sinal celular.</p>
+                </article>
+
+                <article class="content-block">
+                    <h3 class="content-block__title">Stakeholders</h3>
+                    <ul class="list">
+                        <li class="list__item"><span class="text-bold">Cliente/Patrocinador:</span> Equipe técnica do projeto.</li>
+                        <li class="list__item"><span class="text-bold">Usuários:</span> Aventureiros em áreas remotas.</li>
+                        <li class="list__item"><span class="text-bold">Equipe Técnica:</span> Gabriel Paulino, Matheus Henrique, Rodrigo da Silva.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="arquitetura" class="section page-break">
+                <h2 class="section__title">Arquitetura Técnica</h2>
+                
+                <article class="content-block">
+                    <h3 class="content-block__title">Fluxo de Dados (IoT Distribuído)</h3>
+                    <figure>
+                        <pre class="code-block">
+1. EMISSOR (ESP32 + GPS NEO-6M):
+   - Coleta coordenadas e velocidade.
+   - Transmite via LoRa (Radiofrequência).
+
+2. RECEPTOR (ESP32 + LoRa + WiFi):
+   - Recebe sinal RF e valida integridade.
+   - Publica no Broker MQTT via WiFi.
+
+3. BROKER MQTT (Mosquitto):
+   - Gerencia tópicos e distribui mensagens.
+
+4. CLIENTE (App Flutter):
+   - Consome JSON do Broker e renderiza no mapa.
+                        </pre>
+                        <figcaption class="text-italic text-muted">Diagrama simplificado do fluxo de dados ponta-a-ponta.</figcaption>
+                    </figure>
+                </article>
+
+                <article class="content-block">
+                    <h3 class="content-block__title">Stack Tecnológica</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Componente</th>
+                                <th>Tecnologia</th>
+                                <th>Responsabilidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hardware</td>
+                                <td>ESP32</td>
+                                <td>Processamento e comunicação dual (LoRa/WiFi).</td>
+                            </tr>
+                            <tr>
+                                <td>Localização</td>
+                                <td>GPS NEO-6M</td>
+                                <td>Captura de latitude, longitude e velocidade.</td>
+                            </tr>
+                            <tr>
+                                <td>Comunicação</td>
+                                <td>LoRa</td>
+                                <td>Transmissão de dados em longas distâncias sem internet.</td>
+                            </tr>
+                            <tr>
+                                <td>Mensageria</td>
+                                <td>MQTT</td>
+                                <td>Protocolo leve para telemetria IoT.</td>
+                            </tr>
+                            <tr>
+                                <td>Mobile</td>
+                                <td>Flutter</td>
+                                <td>Interface intuitiva e renderização de mapas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+
+            <section id="requisitos" class="section">
+                <h2 class="section__title">Requisitos do Sistema</h2>
+                
+                <div class="content-block">
+                    <h3 class="content-block__title">Requisitos Funcionais</h3>
+                    <ul class="list list--features">
+                        <li class="list__item"><span class="text-bold">RF-01:</span> Envio de localização periódica via hardware.</li>
+                        <li class="list__item"><span class="text-bold">RF-02:</span> Exibição de posição em tempo real no mapa.</li>
+                        <li class="list__item"><span class="text-bold">RF-03:</span> Registro e visualização de histórico de trajeto.</li>
+                        <li class="list__item"><span class="text-bold">RF-04:</span> Acionamento de alerta SOS com feedback visual.</li>
+                        <li class="list__item"><span class="text-bold">RF-05:</span> Função de limpeza de trajeto na interface.</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="content-block__title">Requisitos Não Funcionais</h3>
+                    <ul class="list list--features">
+                        <li class="list__item"><span class="text-bold">Tempo Real:</span> Latência mínima na atualização da posição.</li>
+                        <li class="list__item"><span class="text-bold">Disponibilidade:</span> Operação contínua 24/7 do broker.</li>
+                        <li class="list__item"><span class="text-bold">Baixo Consumo:</span> Otimização de energia no hardware de campo.</li>
+                        <li class="list__item"><span class="text-bold">Escalabilidade:</span> Suporte a múltiplos emissores simultâneos.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="restricoes" class="section">
+                <h2 class="section__title">Restrições e Limitações</h2>
+                
+                <article class="content-block">
+                    <h3 class="content-block__title">Restrições</h3>
+                    <ul class="list">
+                        <li class="list__item">Dependência direta da linha de visada para sinal LoRa.</li>
+                        <li class="list__item">Precisão do GPS sujeita a condições climáticas e cobertura vegetal.</li>
+                        <li class="list__item">Autonomia limitada pela capacidade da bateria do dispositivo.</li>
+                    </ul>
+                </article>
+
+                <article class="content-block">
+                    <h3 class="content-block__title">Limitações (Fora de Escopo)</h3>
+                    <ul class="list">
+                        <li class="list__item">Gestão de infraestrutura de servidores próprios.</li>
+                        <li class="list__item">Implementação de algoritmos complexos de IA.</li>
+                        <li class="list__item">Integração com sistemas externos de terceiros nesta fase.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="cronograma" class="section page-break">
+                <h2 class="section__title">Plano de Desenvolvimento</h2>
+                
+                <div class="roadmap">
+                    <div class="roadmap__item roadmap__item--done">
+                        <div>
+                            <span class="text-bold">Fase 1 - Pesquisa e Prototipagem</span><br>
+                            Estudo de viabilidade LoRa e testes iniciais com sensores.
+                        </div>
+                    </div>
+                    <div class="roadmap__item roadmap__item--active">
+                        <div>
+                            <span class="text-bold">Fase 2 - Hardware e Firmware</span><br>
+                            Integração ESP32 + GPS e testes de alcance em campo.
+                        </div>
+                    </div>
+                    <div class="roadmap__item">
+                        <div>
+                            <span class="text-bold">Fase 3 - Backend e Mobile</span><br>
+                            Configuração MQTT e desenvolvimento do App Flutter.
+                        </div>
+                    </div>
+                    <div class="roadmap__item">
+                        <div>
+                            <span class="text-bold">Fase 4 - Integração e Homologação</span><br>
+                            Testes end-to-end e finalização da documentação técnica.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="aprovacao" class="section">
+                <h2 class="section__title">Aprovação e Assinaturas</h2>
+                
+                <article class="content-block">
+                    <h3 class="content-block__title">Aprovação Técnica (Equipe)</h3>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Desenvolvedores</td>
+                                <td>__________________________________________________</td>
+                            </tr>
+                            <tr>
+                                <td>Data</td>
+                                <td>____/____/2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+
+                <article class="content-block">
+                    <h3 class="content-block__title">Aprovação Acadêmica</h3>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Orientador</td>
+                                <td>Prof. Danilo Ruy Gomes</td>
+                            </tr>
+                            <tr>
+                                <td>Instituição</td>
+                                <td>FATEC Itapetininga</td>
+                            </tr>
+                            <tr>
+                                <td>Assinatura</td>
+                                <td>__________________________________________________</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__content">
+                <p class="text-bold">Trail Guardian - PRD Final</p>
+                <p>Desenvolvido por: Gabriel Teles, Rodrigo da Silva, Matheus Ribeiro</p>
+                <p>Curso: Análise e Desenvolvimento de Sistemas | Versão 1.0</p>
+            </div>
+            <div class="no-print">
+                <button onclick="window.print()" style="padding: 10px 20px; font-size: 1rem; background-color: var(--color-primary); color: white; border: none; cursor: pointer; border-radius: 4px; margin-top: 10px;">
+                    Imprimir Documentação (PDF)
+                </button>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
