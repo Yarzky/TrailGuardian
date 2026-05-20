@@ -33,6 +33,34 @@ class TelaSelecao extends StatelessWidget {
             nome: "ESP32 - 03",
             onTap: () {}, // Adicionar lógica futura
           ),
+          BotaoDispositivo(
+            nome: "ESP32 - 04",
+            onTap: () {}, // Adicionar lógica futura
+          ),
+          BotaoDispositivo(
+            nome: "ESP32 - 05",
+            onTap: () {}, // Adicionar lógica futura
+          ),
+          BotaoDispositivo(
+            nome: "ESP32 - 06",
+            onTap: () {}, // Adicionar lógica futura
+          ),
+          BotaoDispositivo(
+            nome: "ESP32 - 07",
+            onTap: () {}, // Adicionar lógica futura
+          ),
+          BotaoDispositivo(
+            nome: "ESP32 - 08",
+            onTap: () {}, // Adicionar lógica futura
+          ),
+          BotaoDispositivo(
+            nome: "ESP32 - 09",
+            onTap: () {}, // Adicionar lógica futura
+          ),
+          BotaoDispositivo(
+            nome: "ESP32 - 10",
+            onTap: () {}, // Adicionar lógica futura
+          ),
         ],
       ),
     );
